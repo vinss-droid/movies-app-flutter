@@ -39,14 +39,18 @@ class _HomeState extends State<Home> {
             IconButton(onPressed: (){}, icon: const Icon(Icons.notifications)),
           ],
         ),
+        // drawer: Drawer(),
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Upcoming', style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16
+              Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: const Text(
+                  'Upcoming', style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16
+                  ),
                 ),
               ),
               FutureBuilder(
@@ -62,26 +66,36 @@ class _HomeState extends State<Home> {
                         itemBuilder: (context, index, movieIndex) {
                           final movie = movies[index];
                           return Container(
-                            width: double.infinity,
+                            height: 200,
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15)
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(16)
                             ),
-                            child: Image.network('https://image.tmdb.org/t/p/original/${movie.backdropPath}'),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(16),
+                              child: Image.network(
+                                  'https://image.tmdb.org/t/p/original/${movie.backdropPath}',
+                                fit: BoxFit.fill,
+                              ),
+                            ),
                           );
                         },
                         options: CarouselOptions(
                           autoPlay: true,
                           enlargeCenterPage: true,
-                          aspectRatio: 1.4,
+                          aspectRatio: 16/9,
                           autoPlayInterval: const Duration(seconds: 3),
                         )
                     );
                   }
               ),
-              const Text(
-                'Popular', style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16
+              Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: const Text(
+                  'Popular', style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16
+                ),
                 ),
               ),
               Container(
@@ -122,10 +136,13 @@ class _HomeState extends State<Home> {
                   }
                 ),
               ),
-              const Text(
-                'Top Rated', style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16
+              Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: const Text(
+                  'Top Rated', style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16
+                ),
                 ),
               ),
               Container(
