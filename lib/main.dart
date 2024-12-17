@@ -3,7 +3,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:movies_apps/screens/home.dart';
 
 Future main() async {
-  await dotenv.load(fileName: '.env');
+  await dotenv.load(fileName: 'app.env');
   runApp(const MyApp());
 }
 
